@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="footer">
-      <p>HYPE &copy; {new Date().getFullYear()} — a simple learning project.</p>
+      <p>HYPE &copy; {new Date().getFullYear()} —© 2026 HYPE. All rights reserved. | Contact us: <a href="mailto:{pratyushbanerjee75@gmail.com}">pratyushbanerjee75@gmail.com</a> </p>
     </footer>
   );
 }
