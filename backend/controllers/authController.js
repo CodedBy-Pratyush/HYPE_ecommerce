@@ -5,12 +5,18 @@ const User = require("../models/User");
 function signToken(userId) {
   return jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: "7d" });
 }
+const isProduction = process.env.NODE_ENV === "production";
 
+const cookieOptions = {
+  httpOnly: true,
+  secure: isProduction,
+  sameSite: isProduction ? "none" : "lax",
+  maxAge: 7 * 24 * 60 * 60 * 1000,
+};
 // Options for the cookie that stores the login token in the browser.
 const cookieOptions = {
   httpOnly: true, // JavaScript in the browser can't read it (safer)
   sameSite: "lax",
-  secure: process.env.NODE_ENV === "production",
   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
 };
 
